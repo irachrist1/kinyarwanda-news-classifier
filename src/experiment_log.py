@@ -32,7 +32,7 @@ def build_log(results_dir: Path = Path("results")) -> None:
             "validation_weighted_f1": metrics["validation_weighted_f1"],
         })
     with (results_dir / "experiment_log.csv").open("w", newline="") as output:
-        writer = csv.DictWriter(output, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(output, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
