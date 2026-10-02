@@ -33,3 +33,11 @@ Install `requirements-training.txt` to rerun the GRU and LSTM experiments. Each 
 The combined word and character TF-IDF classifier was selected using validation macro F1. On the 1,625-article test set, it reached **81.05% accuracy** and **0.740 macro F1**. The word-bigram baseline reached 80.49% and 0.733. The paired bootstrap 95% interval for their macro F1 difference includes zero, so the observed improvement is uncertain. The test set was used only after selecting the approach.
 
 The trained model is stored in `artifacts/final.joblib`. It is a serialized scikit-learn object; load only this trusted repository artifact.
+
+## Run the app
+
+```bash
+streamlit run app.py
+```
+
+The app accepts Kinyarwanda news text and returns one of the 14 topics. Its model is the tested classifier in this repository, so it does not need a separate model service.
