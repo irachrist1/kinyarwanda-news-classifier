@@ -1,0 +1,36 @@
+{
+  "source": "https://github.com/Andrews2017/KINNEWS-and-KIRNEWS-Corpus",
+  "download": "https://drive.google.com/drive/folders/1zxn0hgrOLlUsK5V0c7l71eAj1t2jiyox",
+  "raw_sha256": {
+    "train.csv_raw": "9be7644d76b4bfff6970e6145550c48b1a9c471ab0089ef45b66ff2e40bf27be",
+    "test.csv_raw": "92941d84ac3ae22393a5c64b18791cfdaaf14635bdcb1cc5f2f5d50de5cbfd40"
+  },
+  "seed": 42,
+  "original_rows": 21268,
+  "rows_after_missing_text": 21263,
+  "rows_after_conflicting_labels": 19774,
+  "unique_articles": 10831,
+  "split_sizes": {
+    "train": 7581,
+    "validation": 1625,
+    "test": 1625
+  },
+  "label_counts": {
+    "1": 2070,
+    "2": 1710,
+    "3": 1275,
+    "4": 1350,
+    "5": 1761,
+    "6": 228,
+    "7": 252,
+    "8": 109,
+    "9": 210,
+    "10": 128,
+    "11": 697,
+    "12": 137,
+    "13": 166,
+    "14": 738
+  },
+  "cleaning": "NFC Unicode and whitespace normalization; remove blank text, conflicting labels for identical titles or bodies, then deduplicate by title and body; stratified 70/15/15 split.",
+  "published_split_note": "The publisher's split has duplicate articles within and across train/test; this project makes a new article-level split."
+}
