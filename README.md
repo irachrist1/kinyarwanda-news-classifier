@@ -34,6 +34,8 @@ The combined word and character TF-IDF classifier was selected using validation 
 
 The trained model is stored in `artifacts/final.joblib`. It is a serialized scikit-learn object; load only this trusted repository artifact.
 
+The [research report](report/report.pdf) includes the full method, results, error analysis, and references. Its [editable version](report/report.docx) and [rubric audit](report/rubric_audit.md) are also included. To rebuild both formats from the saved results, install `requirements-report.txt` and run `python report/build_report.py`, then run `npm install --prefix report` and `node report/build_docx.mjs`.
+
 ## Run the app
 
 ```bash
