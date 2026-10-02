@@ -1,0 +1,8 @@
+{
+  "experiment": "word_character",
+  "validation_accuracy": 0.8147692307692308,
+  "validation_macro_f1": 0.7302140157925213,
+  "validation_weighted_f1": 0.8121222636621213,
+  "train_rows": 7581,
+  "validation_rows": 1625
+}

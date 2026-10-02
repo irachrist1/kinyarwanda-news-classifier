@@ -1,0 +1,8 @@
+{
+  "experiment": "majority",
+  "validation_accuracy": 0.19138461538461538,
+  "validation_macro_f1": 0.022948642266824085,
+  "validation_weighted_f1": 0.06148823903369358,
+  "train_rows": 7581,
+  "validation_rows": 1625
+}
