@@ -8,6 +8,7 @@ import streamlit as st
 
 
 ROOT = Path(__file__).resolve().parent
+ENGLISH_DISPLAY = {"politic": "Politics", "sport": "Sports", "relationship": "Relationships"}
 
 
 @st.cache_resource
@@ -33,7 +34,8 @@ if submitted:
         prediction = int(model.predict([article])[0])
         name = labels[str(prediction)]
         st.subheader(name["kinyarwanda"].capitalize())
-        st.write(f"English topic: {name['english'].capitalize()}")
+        english = ENGLISH_DISPLAY.get(name["english"], name["english"].capitalize())
+        st.write(f"English topic: {english}")
 
 st.caption("Trained on Kinyarwanda news articles. Predictions for short messages or other types of text may be less reliable.")
 st.caption("Data: [KINNEWS corpus](https://github.com/Andrews2017/KINNEWS-and-KIRNEWS-Corpus). [Model evaluation](https://github.com/irachrist1/kinyarwanda-news-classifier/blob/main/results/test_metrics.json).")

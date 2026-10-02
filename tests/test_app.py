@@ -9,4 +9,4 @@ def test_app_classifies_a_news_headline() -> None:
     app.text_area[0].set_value("Abakinnyi b'umupira w'amaguru bitegura umukino w'igikombe cy'isi").run()
     app.button[0].click().run()
     assert not app.exception
-    assert app.subheader[0].value
+    assert app.subheader[0].value == "Imikino"
