@@ -1,0 +1,8 @@
+{
+  "experiment": "word_bigram",
+  "validation_accuracy": 0.812923076923077,
+  "validation_macro_f1": 0.7191055331128618,
+  "validation_weighted_f1": 0.8089946742268481,
+  "train_rows": 7581,
+  "validation_rows": 1625
+}

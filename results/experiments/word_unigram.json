@@ -1,0 +1,8 @@
+{
+  "experiment": "word_unigram",
+  "validation_accuracy": 0.8061538461538461,
+  "validation_macro_f1": 0.7176317963989644,
+  "validation_weighted_f1": 0.8026748217474952,
+  "train_rows": 7581,
+  "validation_rows": 1625
+}

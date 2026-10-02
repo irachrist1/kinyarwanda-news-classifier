@@ -1,0 +1,36 @@
+{
+  "experiment": "lstm_8epochs_320tokens",
+  "validation_accuracy": 0.5433846153846154,
+  "validation_macro_f1": 0.23716853422876807,
+  "validation_weighted_f1": 0.46554135829190274,
+  "epochs_completed": 3,
+  "epochs": 8,
+  "vocabulary_size": 20000,
+  "sequence_length": 320,
+  "embedding_size": 64,
+  "hidden_size": 48,
+  "batch_size": 64,
+  "seed": 42,
+  "history": {
+    "accuracy": [
+      0.25497955083847046,
+      0.4567998945713043,
+      0.5840917825698853
+    ],
+    "loss": [
+      2.1997761726379395,
+      1.6609382629394531,
+      1.256859302520752
+    ],
+    "val_accuracy": [
+      0.41292306780815125,
+      0.5433846116065979,
+      0.5452307462692261
+    ],
+    "val_loss": [
+      1.9450104236602783,
+      1.447935700416565,
+      1.4539498090744019
+    ]
+  }
+}

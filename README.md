@@ -7,9 +7,29 @@ This project studies topic classification for Kinyarwanda news articles using th
 Create a Python environment and install `requirements.txt`. Download the authors' [KINNEWS folder](https://drive.google.com/drive/folders/1zxn0hgrOLlUsK5V0c7l71eAj1t2jiyox) into `data/raw`, then prepare the split:
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 python -m pip install -r requirements.txt
 gdown --folder 'https://drive.google.com/drive/folders/1zxn0hgrOLlUsK5V0c7l71eAj1t2jiyox' -O data/raw
 python -m src.data
 ```
 
-The data is not stored in this repository. [DATASET.md](DATASET.md) documents the source, quality audit, and split. Project details and verified results will be added as each stage is completed.
+The data is not stored in this repository. [DATASET.md](DATASET.md) documents the source, quality audit, and split.
+
+## Experiments
+
+The [experiment log](results/experiment_log.csv) records each change, hypothesis, and measured validation result. To rerun the main comparison and held-out evaluation:
+
+```bash
+python -m src.linear word_unigram
+python -m src.linear word_bigram
+python -m src.linear character
+python -m src.linear word_character
+python -m src.evaluate
+```
+
+Install `requirements-training.txt` to rerun the GRU and LSTM experiments. Each command in `src/recurrent.py` takes one to several minutes on an Apple M2 Pro CPU.
+
+The combined word and character TF-IDF classifier was selected using validation macro F1. On the 1,625-article test set, it reached **81.05% accuracy** and **0.740 macro F1**. The word-bigram baseline reached 80.49% and 0.733. The paired bootstrap 95% interval for their macro F1 difference includes zero, so the observed improvement is uncertain. The test set was used only after selecting the approach.
+
+The trained model is stored in `artifacts/final.joblib`. It is a serialized scikit-learn object; load only this trusted repository artifact.
