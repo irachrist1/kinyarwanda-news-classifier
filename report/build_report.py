@@ -121,7 +121,7 @@ def build_blocks() -> list[dict]:
     add("paragraph", text="The interpretations above are hypotheses based on article titles, source categories, and predicted labels; they were not adjudicated by a Kinyarwanda-speaking annotator. Some examples may expose broad or noisy publisher categories rather than a purely model-induced error. A manual review of full articles would be needed to separate those causes.")
 
     add("heading", text="8. Deployment")
-    add("paragraph", text="The public Streamlit interface accepts a Kinyarwanda headline or article and calls the packaged scikit-learn pipeline directly. It returns the Kinyarwanda topic name and an English gloss. No external model API is required, and decision margins are not presented as calibrated probabilities. The public deployment was tested with three distinct text inputs and an empty-input warning. The repository includes the exact model artifact and dependency list; the live URL appears in the project links above. The app can also be run locally with `streamlit run app.py`.")
+    add("paragraph", text="The public web interface sends Kinyarwanda news text to a Python endpoint on Vercel (2026). Shared src/inference.py loads the exact evaluated scikit-learn pipeline and returns Kinyarwanda and English topic names. No external model service is used, and decision margins are not shown as probabilities. The deployed app was tested with three distinct text inputs and blank-input handling. Pinned serving dependencies and the preparation script are in web/. The repository also includes a local Streamlit interface, started with `streamlit run app.py`.")
 
     add("heading", text="9. Limitations and Future Work")
     add("paragraph", text="Deduplication removed nearly half of the published rows and all title/body groups with contradictory labels. This improves evaluation separation but changes the benchmark population. The random split still shares publishers and possible stylistic patterns across partitions. The corpus lacks dates, independent label adjudication, and broad representation of informal Kinyarwanda. A classifier trained on article bodies may be unreliable on a short headline or unrelated text, and it has no calibrated abstention mechanism.")
@@ -141,6 +141,7 @@ def build_blocks() -> list[dict]:
         "scikit-learn developers. (2026). TfidfVectorizer and LinearSVC documentation. https://scikit-learn.org/stable/modules/feature_extraction.html and https://scikit-learn.org/stable/modules/svm.html",
         "TensorFlow developers. (2026). Keras recurrent layers and TextVectorization documentation. https://www.tensorflow.org/api_docs/python/tf/keras/layers",
         "Streamlit developers. (2026). Streamlit documentation. https://docs.streamlit.io/",
+        "Vercel. (2026). Python Functions in the /api Directory. https://vercel.com/docs/functions/runtimes/python/api-directory",
     ]
     for reference in references:
         add("reference", text=reference)

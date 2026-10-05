@@ -5,7 +5,7 @@ Due **18 October 2026 at 11:59pm**. Upload the final **PDF** to the course submi
 ## Direct links
 
 - Repository: https://github.com/irachrist1/kinyarwanda-news-classifier
-- Live app: https://kinyarwanda-news-topics.streamlit.app/
+- Live app: https://kinyarwanda-news-topics.vercel.app/
 - Demo video: [paste the direct viewable URL]
 
 ## Before recording

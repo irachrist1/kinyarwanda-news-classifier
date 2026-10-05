@@ -21,7 +21,7 @@
   {
     "type": "link",
     "label": "Live system",
-    "url": "https://kinyarwanda-news-topics.streamlit.app/",
+    "url": "https://kinyarwanda-news-topics.vercel.app/",
     "missing": "Public deployment pending; run locally with `streamlit run app.py` in the meantime."
   },
   {
@@ -323,7 +323,7 @@
   },
   {
     "type": "paragraph",
-    "text": "The public Streamlit interface accepts a Kinyarwanda headline or article and calls the packaged scikit-learn pipeline directly. It returns the Kinyarwanda topic name and an English gloss. No external model API is required, and decision margins are not presented as calibrated probabilities. The public deployment was tested with three distinct text inputs and an empty-input warning. The repository includes the exact model artifact and dependency list; the live URL appears in the project links above. The app can also be run locally with `streamlit run app.py`."
+    "text": "The public web interface sends Kinyarwanda news text to a Python endpoint on Vercel (2026). Shared src/inference.py loads the exact evaluated scikit-learn pipeline and returns Kinyarwanda and English topic names. No external model service is used, and decision margins are not shown as probabilities. The deployed app was tested with three distinct text inputs and blank-input handling. Pinned serving dependencies and the preparation script are in web/. The repository also includes a local Streamlit interface, started with `streamlit run app.py`."
   },
   {
     "type": "heading",
@@ -384,5 +384,9 @@
   {
     "type": "reference",
     "text": "Streamlit developers. (2026). Streamlit documentation. https://docs.streamlit.io/"
+  },
+  {
+    "type": "reference",
+    "text": "Vercel. (2026). Python Functions in the /api Directory. https://vercel.com/docs/functions/runtimes/python/api-directory"
   }
 ]
