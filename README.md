@@ -44,6 +44,8 @@ streamlit run app.py
 
 The app accepts Kinyarwanda news text and returns one of the 14 topics. Its model is the tested classifier in this repository, so it does not need a separate model service.
 
+The HTTP interface in `web/` uses the same `src/inference.py` and model artifact. To deploy it with the Vercel CLI, run `python web/prepare.py`, then `vercel --cwd web --prod`. The preparation step copies only the evaluated model, label map, and shared inference module into the deployment folder.
+
 [Open the deployed app](https://kinyarwanda-news-topics.streamlit.app/). The public workflow was checked with sports, health, and overlapping fashion/entertainment inputs, plus an empty input.
 
 ## Colab
