@@ -74,7 +74,7 @@ def build_blocks() -> list[dict]:
         blocks.append({"type": kind, **values})
 
     add("title", text="Leakage-aware Kinyarwanda news topic classification")
-    add("subtitle", text="Individual NLP summative project | Christian Tonny | 2 October 2026")
+    add("subtitle", text="Individual NLP summative project | Christian Tonny | October 2026")
     add("link", label="GitHub repository", url=links["repository"])
     add("link", label="Demo video", url=links["demo_video"], missing="Not yet recorded; add the direct video link before submission.")
     add("link", label="Live system", url=links["live_system"], missing="Public deployment pending; run locally with `streamlit run app.py` in the meantime.")
@@ -121,7 +121,7 @@ def build_blocks() -> list[dict]:
     add("paragraph", text="The interpretations above are hypotheses based on article titles, source categories, and predicted labels; they were not adjudicated by a Kinyarwanda-speaking annotator. Some examples may expose broad or noisy publisher categories rather than a purely model-induced error. A manual review of full articles would be needed to separate those causes.")
 
     add("heading", text="8. Deployment")
-    add("paragraph", text="The Streamlit interface accepts a Kinyarwanda headline or article and calls the packaged scikit-learn pipeline directly. It returns the Kinyarwanda topic name and an English gloss. No external model API is required, and decision margins are not presented as calibrated probabilities. The app was tested locally with an input-to-output workflow and an HTTP health check. The repository includes its exact model artifact and dependency list. The public live link will be inserted in the project links when deployment is complete; local execution remains an alternative demonstration path.")
+    add("paragraph", text="The public Streamlit interface accepts a Kinyarwanda headline or article and calls the packaged scikit-learn pipeline directly. It returns the Kinyarwanda topic name and an English gloss. No external model API is required, and decision margins are not presented as calibrated probabilities. The public deployment was tested with three distinct text inputs and an empty-input warning. The repository includes the exact model artifact and dependency list; the live URL appears in the project links above. The app can also be run locally with `streamlit run app.py`.")
 
     add("heading", text="9. Limitations and Future Work")
     add("paragraph", text="Deduplication removed nearly half of the published rows and all title/body groups with contradictory labels. This improves evaluation separation but changes the benchmark population. The random split still shares publishers and possible stylistic patterns across partitions. The corpus lacks dates, independent label adjudication, and broad representation of informal Kinyarwanda. A classifier trained on article bodies may be unreliable on a short headline or unrelated text, and it has no calibrated abstention mechanism.")

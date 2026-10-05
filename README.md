@@ -44,6 +44,8 @@ streamlit run app.py
 
 The app accepts Kinyarwanda news text and returns one of the 14 topics. Its model is the tested classifier in this repository, so it does not need a separate model service.
 
+[Open the deployed app](https://kinyarwanda-news-topics.streamlit.app/). The public workflow was checked with sports, health, and overlapping fashion/entertainment inputs, plus an empty input.
+
 ## Colab
 
 The [end-to-end Colab notebook](https://colab.research.google.com/github/irachrist1/kinyarwanda-news-classifier/blob/main/notebooks/kinyarwanda_news_end_to_end.ipynb) downloads the source data and runs preparation, training, evaluation, and inference in order.
