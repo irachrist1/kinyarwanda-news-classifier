@@ -46,7 +46,8 @@ def slide(index: int, entry: tuple[str, str, str, str]) -> str:
         extra = f'<div class="demo"><span>THREE INPUTS TO PASTE</span>{cards}</div>'
     if index == 10:
         live = links["live_system"] or "Add the public app link after deployment"
-        extra = f'<div class="links"><a href="{html.escape(links["repository"])}">Repository ↗</a><span>{html.escape(live)}</span></div>'
+        app_link = f'<a href="{html.escape(live, quote=True)}">Live app ↗</a>' if links["live_system"] else f'<span>{html.escape(live)}</span>'
+        extra = f'<div class="links"><a href="{html.escape(links["repository"], quote=True)}">Repository ↗</a>{app_link}</div>'
     return f'''<section class="slide snap" id="slide-{index}"><div class="inner"><div class="top"><span>{index:02d} / 10</span><span>{html.escape(timing)}</span></div><div class="body"><div class="eyebrow">{html.escape(eyebrow)}</div><h2>{html.escape(heading)}</h2><p class="script">{html.escape(script)}</p>{extra}</div><div class="foot"><span>Use ↓ or space for the next screen</span><div class="rail"><i style="width:{index*10}%"></i></div></div></div></section>'''
 
 

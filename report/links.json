@@ -1,5 +1,5 @@
 {
   "repository": "https://github.com/irachrist1/kinyarwanda-news-classifier",
   "demo_video": null,
-  "live_system": null
+  "live_system": "https://kinyarwanda-news-topics.streamlit.app/"
 }
