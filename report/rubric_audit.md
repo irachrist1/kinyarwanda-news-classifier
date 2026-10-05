@@ -9,7 +9,7 @@ This maps the 60-point rubric to files and actions that can be checked before su
 | Baseline and experiments | 8 | `results/experiment_log.csv` with change and hypothesis; report Tables 1–3; demo script screens 4–6 | Explain why the majority and word baselines matter, then each controlled change |
 | Evaluation and errors | 7 | `results/test_metrics.json`; `results/error_examples.csv`; confusion matrix; report sections 6–7 | Show one success and two failures, explain macro F1 and uncertainty |
 | Research report | 10 | `report/report.pdf`, editable `report/report.docx`, 11 required sections, references, real figures and tables | Add the direct video link and rebuild both files |
-| Web deployment | 7 | `app.py`; packaged `artifacts/final.joblib`; [live app](https://kinyarwanda-news-topics.streamlit.app/) | Show three inputs at the public link in the video |
+| Web deployment | 7 | `web/index.html`; `web/api/classify.py`; `src/inference.py`; packaged `artifacts/final.joblib`; [live app](https://kinyarwanda-news-topics.vercel.app/) | Show three inputs at the public link in the video |
 | Code and reproducibility | 5 | `src/`, one Colab notebook, `requirements.txt`, README, versioned results and model | Add the direct video URL to README |
 | Technical defense | 5 | Timed demo script; readable source and results | Record the demo in your own words and rehearse likely viva questions |
 

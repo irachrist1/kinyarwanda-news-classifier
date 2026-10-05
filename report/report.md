@@ -6,7 +6,7 @@ Individual NLP summative project | Christian Tonny | October 2026
 
 **Demo video:** Not yet recorded; add the direct video link before submission.
 
-**Live system:** https://kinyarwanda-news-topics.streamlit.app/
+**Live system:** https://kinyarwanda-news-topics.vercel.app/
 
 ## 1. Abstract
 
@@ -114,7 +114,7 @@ The interpretations above are hypotheses based on article titles, source categor
 
 ## 8. Deployment
 
-The public Streamlit interface accepts a Kinyarwanda headline or article and calls the packaged scikit-learn pipeline directly. It returns the Kinyarwanda topic name and an English gloss. No external model API is required, and decision margins are not presented as calibrated probabilities. The public deployment was tested with three distinct text inputs and an empty-input warning. The repository includes the exact model artifact and dependency list; the live URL appears in the project links above. The app can also be run locally with `streamlit run app.py`.
+The public web interface sends Kinyarwanda news text to a Python endpoint on Vercel (2026). Shared src/inference.py loads the exact evaluated scikit-learn pipeline and returns Kinyarwanda and English topic names. No external model service is used, and decision margins are not shown as probabilities. The deployed app was tested with three distinct text inputs and blank-input handling. Pinned serving dependencies and the preparation script are in web/. The repository also includes a local Streamlit interface, started with `streamlit run app.py`.
 
 ## 9. Limitations and Future Work
 
@@ -145,3 +145,5 @@ scikit-learn developers. (2026). TfidfVectorizer and LinearSVC documentation. ht
 TensorFlow developers. (2026). Keras recurrent layers and TextVectorization documentation. https://www.tensorflow.org/api_docs/python/tf/keras/layers
 
 Streamlit developers. (2026). Streamlit documentation. https://docs.streamlit.io/
+
+Vercel. (2026). Python Functions in the /api Directory. https://vercel.com/docs/functions/runtimes/python/api-directory
