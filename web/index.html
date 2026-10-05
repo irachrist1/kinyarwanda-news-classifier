@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kinyarwanda News Topics</title>
+  <style>
+    :root{--cream:#f7f4ef;--ink:#1a1a1a;--muted:#6b6b61;--border:#e0dbd2}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{width:min(900px,100%);margin:0 auto;padding:64px 28px 38px}header{margin-bottom:32px}
+    .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+    h1{font:400 clamp(42px,7vw,70px)/1.04 Georgia,serif;letter-spacing:-.045em;margin:14px 0 20px;max-width:650px}
+    .intro{max-width:590px;color:#4a4a4a;margin:0}form{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px}
+    label{display:block;font-weight:600;margin-bottom:10px}textarea{width:100%;min-height:190px;resize:vertical;border:1px solid var(--border);border-radius:10px;padding:16px;background:#fdfcf9;color:var(--ink);font:inherit;line-height:1.5}
+    textarea:focus{outline:2px solid #686752;outline-offset:2px}button{font:inherit;cursor:pointer;border:1px solid var(--border);border-radius:9px;padding:8px 13px;background:white;color:var(--ink)}
+    button:hover{background:#eee9e1}button:focus-visible,a:focus-visible{outline:2px solid #686752;outline-offset:3px}
+    .samples{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 24px}.samples button{font-size:13px;color:#55554a}
+    .submit{background:var(--ink);color:#fff;border-color:var(--ink);padding:11px 20px;font-weight:600}.submit:hover{background:#34342e}.submit:disabled{opacity:.6;cursor:wait}
+    #result{margin-top:24px;border-top:1px solid var(--border);padding-top:20px}#result[hidden]{display:none}
+    #topic{font:400 36px/1.2 Georgia,serif;margin:5px 0}#english{color:#4a4a4a;margin:6px 0 0}#status{margin:14px 0 0;color:#81471e;font-size:14px}#status:empty{display:none}
+    footer{color:var(--muted);font-size:13px;margin-top:22px}footer p{margin:8px 0}a{color:inherit;text-underline-offset:3px}
+    @media(max-width:600px){main{padding:32px 18px}form{padding:20px}.samples{gap:6px}.samples button{font-size:12px}}
+    @media(prefers-reduced-motion:no-preference){header,form{animation:enter .5s ease-out both}form{animation-delay:.12s}@keyframes enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">14 topics · Kinyarwanda news</div>
+      <h1>What is this news about?</h1>
+      <p class="intro">Paste a Kinyarwanda headline or article. The trained model will predict its topic and show the name in Kinyarwanda and English.</p>
+    </header>
+    <form id="classify">
+      <label for="article">Kinyarwanda news text</label>
+      <textarea id="article" maxlength="50000" placeholder="Andika cyangwa shyiramo inkuru hano..."></textarea>
+      <div class="samples" aria-label="Example headlines">
+        <button type="button" data-example="Ikipe y’u Rwanda yatsinze umukino wa nyuma w’igikombe">Sports headline</button>
+        <button type="button" data-example="Minisiteri y’ubuzima yatangaje gahunda nshya yo gukingira abana">Health headline</button>
+        <button type="button" data-example="Imyambarire idasanzwe yaranze ibirori bya Met Gala (Amafoto)">Fashion and entertainment</button>
+      </div>
+      <button class="submit" id="submit" type="submit">Classify topic</button>
+      <p id="status" role="status" aria-live="polite"></p>
+      <section id="result" aria-live="polite" hidden>
+        <div class="eyebrow">Predicted topic</div>
+        <h2 id="topic"></h2>
+        <p id="english"></p>
+      </section>
+    </form>
+    <footer>
+      <p>Trained on news articles. Short messages and other types of text may be less reliable. A prediction can be wrong, especially when topics overlap.</p>
+      <p>Data: <a href="https://github.com/Andrews2017/KINNEWS-and-KIRNEWS-Corpus">KINNEWS corpus</a> · <a href="https://github.com/irachrist1/kinyarwanda-news-classifier/blob/main/results/test_metrics.json">Model evaluation</a> · <a href="https://github.com/irachrist1/kinyarwanda-news-classifier">Source code</a></p>
+    </footer>
+  </main>
+  <script>
+    const article=document.getElementById('article');
+    const status=document.getElementById('status');
+    const result=document.getElementById('result');
+    const submit=document.getElementById('submit');
+    document.querySelectorAll('[data-example]').forEach(button=>button.addEventListener('click',()=>{
+      article.value=button.dataset.example;result.hidden=true;status.textContent='';article.focus();
+    }));
+    document.getElementById('classify').addEventListener('submit',async event=>{
+      event.preventDefault();result.hidden=true;status.textContent='';
+      if(!article.value.trim()){status.textContent='Enter some news text first.';article.focus();return;}
+      submit.disabled=true;submit.textContent='Classifying...';
+      try{
+        const response=await fetch('/api/classify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:article.value})});
+        const data=await response.json();
+        if(!response.ok){throw new Error(data.error||'The prediction could not be completed. Please try again.');}
+        document.getElementById('topic').textContent=data.kinyarwanda;
+        document.getElementById('english').textContent='English topic: '+data.english;
+        result.hidden=false;
+      }catch(error){status.textContent=error instanceof SyntaxError?'The server could not respond. Please try again.':error.message;}
+      finally{submit.disabled=false;submit.textContent='Classify topic';}
+    });
+  </script>
+</body>
+</html>
